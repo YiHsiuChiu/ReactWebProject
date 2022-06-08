@@ -15,7 +15,7 @@ node app.js
 
 ## 後端Server功能
 ### food
-POST: 店家登入資料，將店家資料依下格式夾帶在body中傳送
+POST: 店家登錄資料，將店家資料依下格式夾帶在body中傳送 (header記得帶"Content-Type:application/json")
 ```
 {
   Name: string,
@@ -43,7 +43,14 @@ ex.
   price: [ '0', '1', '2' ]
 }
 ```
+其中，style,location等後四項依店家登錄頁面順序編碼填入(從0開始算 => style 0 = 西式)
+傳送後server應回傳insert data
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172549071-d42c4fa3-3a03-4d24-be60-b211d4b41b87.png">
 
+
+GET: 客戶端抽取店家，回傳目前營業中且符合客戶端需求之店家
+客戶端需求以queryparams表示，編碼方式與POST相同
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172549642-e688127e-1b49-4672-9a5c-cc2b811e0c08.png">
 
 
 
