@@ -53,12 +53,11 @@ ex.
 ```
 其中，style,location等後四項依店家登錄頁面順序編碼填入(從0開始算 => style 0 = 西式)
 傳送後server應回傳insert data
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172549071-d42c4fa3-3a03-4d24-be60-b211d4b41b87.png">
-
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172752794-f273c489-d006-4b53-b646-06a31ed4bf1e.png">
 
 GET: 客戶端抽取店家，回傳目前營業中且符合客戶端需求之店家
 客戶端需求以queryparams表示，編碼方式與POST相同
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172549642-e688127e-1b49-4672-9a5c-cc2b811e0c08.png">
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/50900244/172752878-232dcf6e-8013-4597-8c5d-713ccba24951.png">
 
 
 
