@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 let database = null;
 
-app.get('/queryFood', function (req, res) {
+app.get('/food', function (req, res) {
     var date = new Date(Date.now());
     var hours = date.getHours();
 
@@ -21,47 +21,48 @@ app.get('/queryFood', function (req, res) {
         if (err) throw err;
         let data = result;
         data.forEach(element => {
-            if (hours >= element.startTime.split(":")[0]) {
-                if (hours < element.endTime.split(":")[0]) {
-                    if (req.query.price != undefined) {
-                        // console.log(JSON.parse(req.query.price))
-                        let r = JSON.parse(req.query.price).filter((e) => {
-                            return element.price.indexOf(e) > -1
-                        })
-                        if(r.length==0)
-                            return
+            if (element.week.indexOf(new Date().getDay().toString()) > -1) {
+                if (hours >= element.startTime.split(":")[0]) {
+                    if (hours < element.endTime.split(":")[0]) {
+                        if (req.query.price != undefined) {
+                            // console.log(JSON.parse(req.query.price))
+                            let r = JSON.parse(req.query.price).filter((e) => {
+                                return element.price.indexOf(e) > -1
+                            })
+                            if (r.length == 0)
+                                return
+                        }
+                        if (req.query.style != undefined) {
+                            let r = JSON.parse(req.query.style).filter((e) => {
+                                return element.style.indexOf(e) > -1
+                            })
+                            if (r.length == 0)
+                                return
+                        }
+                        if (req.query.location != undefined) {
+                            let r = JSON.parse(req.query.location).filter((e) => {
+                                return element.location.indexOf(e) > -1
+                            })
+                            if (r.length == 0)
+                                return
+                        }
+                        if (req.query.type != undefined) {
+                            let r = JSON.parse(req.query.type).filter((e) => {
+                                return element.type.indexOf(e) > -1
+                            })
+                            if (r.length == 0)
+                                return
+                        }
+                        output.push(element)
                     }
-                    if (req.query.style != undefined) {
-                        let r = JSON.parse(req.query.style).filter((e) => {
-                            return element.style.indexOf(e) > -1
-                        })
-                        if(r.length==0)
-                            return
-                    }
-                    if (req.query.location != undefined) {
-                        let r = JSON.parse(req.query.location).filter((e) => {
-                            return element.location.indexOf(e) > -1
-                        })
-                        if(r.length==0)
-                            return
-                    }
-                    if (req.query.type != undefined) {
-                        let r = JSON.parse(req.query.type).filter((e) => {
-                            return element.type.indexOf(e) > -1
-                        })
-                        if(r.length==0)
-                            return
-                    }
-                    output.push(element)
                 }
             }
-
         });
         res.send(output);
     });
 });
 
-app.post('/insertFood', function (req, res) {
+app.post('/food', function (req, res) {
     console.log(req.body)
     writeData(req.body)
     res.send("data insert");
