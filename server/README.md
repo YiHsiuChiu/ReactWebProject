@@ -3,7 +3,7 @@
 ## 資料庫建置
 1. 至MongoDB下載community server (https://www.mongodb.com/try/download/community)，
 2. 創建DB與其Collection (db name: React, collection name: Food)
-<img width="1183" alt="image" src="https://user-images.githubusercontent.com/50900244/172546088-ef50a877-d6a5-479c-ab3e-b4e8f4a248d2.png">
+<img width="1182" alt="image" src="https://user-images.githubusercontent.com/50900244/172753143-3e8dca42-6011-41f5-bb47-98409a53ff39.png">
 
 ## 模組安裝與執行
 ```
