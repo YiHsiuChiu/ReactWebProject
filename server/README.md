@@ -21,6 +21,7 @@ POST: 店家登錄資料，將店家資料依下格式夾帶在body中傳送 (he
   Name: string,
   phone: string,
   address: string,
+  week: Array of string,
   startTime: string (HH:MM:SS),
   endTime: string (HH:MM:SS),
   style: Array of string,
@@ -32,15 +33,22 @@ POST: 店家登錄資料，將店家資料依下格式夾帶在body中傳送 (he
 ex.
 ```
 {
+{
   Name: '麥當勞',
   phone: '0912345678',
   address: '台北市文山區指南路二段67號',
+  week: [
+    '0', '1', '2',
+    '3', '4', '5',
+    '6'
+  ],
   startTime: '9:00:00',
   endTime: '22:00:00',
   style: [ '0' ],
   location: [ '6' ],
   type: [ '3' ],
   price: [ '0', '1', '2' ]
+}
 }
 ```
 其中，style,location等後四項依店家登錄頁面順序編碼填入(從0開始算 => style 0 = 西式)
