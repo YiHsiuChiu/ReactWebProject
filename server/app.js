@@ -1,4 +1,5 @@
 var express = require('express');
+// var cors = require('cors');
 var mongoclient = require('mongodb').MongoClient;
 
 var mongourl = "mongodb://localhost:27017/";
@@ -8,6 +9,13 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Credentials', false)
+    res.header("Access-Control-Allow-Headers", "*")
+    next()
+})
+// app.use(cors({ origin: '*' }));
 
 let database = null;
 
