@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 let database = null;
 
 app.get('/food', function (req, res) {
+    //res.set('Access-Control-Allow-Origin', '*');
     var date = new Date(Date.now());
     var hours = date.getHours();
 
@@ -29,7 +30,7 @@ app.get('/food', function (req, res) {
         if (err) throw err;
         let data = result;
         data.forEach(element => {
-            if (element.week.indexOf(new Date().getDay().toString()) > -1) {
+            if (element.week.indexOf(new Date().getDay()) > -1) {
                 if (hours >= element.startTime.split(":")[0]) {
                     if (hours < element.endTime.split(":")[0]) {
                         if (req.query.price != undefined) {
@@ -54,6 +55,7 @@ app.get('/food', function (req, res) {
                             if (r.length == 0)
                                 return
                         }
+                        
                         if (req.query.type != undefined) {
                             let r = JSON.parse(req.query.type).filter((e) => {
                                 return element.type.indexOf(e) > -1
@@ -71,14 +73,15 @@ app.get('/food', function (req, res) {
 });
 
 app.post('/food', function (req, res) {
-    console.log(req.body)
-    writeData(req.body)
+    console.log(req.body);
+    writeData(req.body);
     res.send("data insert");
 });
 
 serverInit();
 
 async function serverInit() {
+    
     database = await connectDB();
     app.listen(3000, function () {
         console.log('server listening on port 3000!');
