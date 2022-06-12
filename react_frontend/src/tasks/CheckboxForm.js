@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import * as React from "react"
+import { useState, useRef } from "react";
 import { Box, FormControlLabel, Checkbox, FormControl, FormLabel, FormGroup, Button } from '@mui/material';
 import myVideo from './抽籤.mp4'
 import Paper from '@mui/material/Paper';
@@ -36,6 +37,8 @@ export default function CheckboxForm() {
         else {
             setfoodStyles(foodStyles.filter((foodstyle) => foodstyle !== e.target.value))
         }
+        
+        //return foodStyles;
     }
     const handlelocationChange = (e) => {
         console.log(e.target.value);
@@ -84,7 +87,7 @@ export default function CheckboxForm() {
             end =new Date().getTime();
         }
     }
-    const submitResult = async (e) => {
+    const submitResult = async () => {
 
         videoEl.current.play();
         delay(6000);
@@ -115,7 +118,7 @@ export default function CheckboxForm() {
         <>
             <NavBar />
             <Stack spacing={1}>
-                <Item>
+                <Item data-testid="test_checkbox">
                     <FormControl>
                         <FormLabel >風格 :</FormLabel>
                         <FormGroup row>
@@ -264,10 +267,10 @@ export default function CheckboxForm() {
                         </FormGroup>
                     </FormControl>
                 </Item>
-                <div style={{ height: "80%", width: "100%" }}><video ref={videoEl} style={{ autoplay: "False", muted: "False", height: "100%", width: "100%", margin: "auto" }} ><source type="video/mp4" src={myVideo}></source></video></div>
+                <div data-testid="test_video" style={{ height: "80%", width: "100%" }}><video ref={videoEl} style={{ autoplay: "False", muted: "False", height: "100%", width: "100%", margin: "auto" }} ><source type="video/mp4" src={myVideo}></source></video></div>
                 <Link style={{ textDecoration: 'none' }} to="/ResultPage">
                     <Box textAlign='center'>
-                        <Button variant="outlined" onClick={submitResult}>Start</Button>
+                        <Button data-testid="test_button" variant="outlined" onClick={submitResult}>Start</Button>
                     </Box>
                 </Link>
             </Stack>
