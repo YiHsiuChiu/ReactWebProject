@@ -25,7 +25,7 @@ export default function CheckboxForm() {
     const [locations, setlocations] = useState([])
     const [foodTypes, setfoodTypes] = useState([])
     const [foodPrices, setfoodPrices] = useState([])
-    const [weeks, setWeek] = useState([])
+    // const [weeks, setWeek] = useState([])
     console.log({ foodStyles })
     console.log({ locations })
     const handlefoodStyleChange = (e) => {
@@ -70,16 +70,16 @@ export default function CheckboxForm() {
             setfoodPrices(foodPrices.filter((foodPrice) => foodPrice !== e.target.value))
         }
     }
-    const handleweekChange = (e) => {
-        console.log(e.target.value);
-        const index = weeks.indexOf(e.target.value);
-        if (index === -1) {
-            setWeek([...weeks, e.target.value]);
-        }
-        else {
-            setWeek(weeks.filter((week) => week !== e.target.value))
-        }
-    }
+    // const handleweekChange = (e) => {
+    //     console.log(e.target.value);
+    //     const index = weeks.indexOf(e.target.value);
+    //     if (index === -1) {
+    //         setWeek([...weeks, e.target.value]);
+    //     }
+    //     else {
+    //         setWeek(weeks.filter((week) => week !== e.target.value))
+    //     }
+    // }
     function delay(n){
         var start = new Date().getTime();
         var end = 0;
@@ -104,9 +104,9 @@ export default function CheckboxForm() {
         if(foodPrices.length!=0){
             url = url + `&price=[${foodPrices}]`;
         }
-        if(weeks.length!=0){
-            url = url + `&week=[${weeks}]`;
-        }
+        // if(weeks.length!=0){
+        //     url = url + `&week=[${weeks}]`;
+        // }
         url.replace('?&','?')
         //const response = await fetch(`http://localhost:3000/food?style=[${foodStyles}]&location=[${locations}]&type=[${foodTypes}]&price=[${foodPrices}]&week=[${weeks}]`)
         const response = await fetch(url)
@@ -234,7 +234,7 @@ export default function CheckboxForm() {
                                 control={<Checkbox size="small" value='3' checked={foodPrices.includes('3')} onChange={handlefoodPriceChange} />}
                             />
                         </FormGroup>
-                        <FormLabel>營業時間 :</FormLabel>
+                        {/* <FormLabel>營業時間 :</FormLabel>
                         <FormGroup row>
                             <FormControlLabel
                                 label={<Box component="div" fontSize={10}>星期日</Box>}
@@ -264,7 +264,7 @@ export default function CheckboxForm() {
                                 label={<Box component="div" fontSize={10}>星期六</Box>}
                                 control={<Checkbox size="small" value='6' checked={weeks.includes('6')} onChange={handleweekChange} />}
                             />
-                        </FormGroup>
+                        </FormGroup> */}
                     </FormControl>
                 </Item>
                 <div data-testid="test_video" style={{ height: "80%", width: "100%" }}><video ref={videoEl} style={{ autoplay: "False", muted: "False", height: "100%", width: "100%", margin: "auto" }} ><source type="video/mp4" src={myVideo}></source></video></div>
