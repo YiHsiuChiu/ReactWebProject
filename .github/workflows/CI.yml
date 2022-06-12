@@ -6,19 +6,7 @@ on:
       - "main"
 
 jobs:
-#   static_analysis:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-node@v2
-#         with:
-#           node-version: "17"
-#           cache: "npm"
-#       -run: npm install
-#       -run: npm run lint
-
   unit_test:
-    # needs: static_analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,8 +14,9 @@ jobs:
         with:
           node-version: "17"
           cache: "npm"
-      -run: npm install
-      -run: npm run test
+      - run: cd react_frontend
+      - run: npm install
+      - run: npm run test
 
   try_build:
     needs: unit_test
@@ -38,5 +27,6 @@ jobs:
         with:
           node-version: "17"
           cache: "npm"
-      -run: npm install
-      -run: npm run build
+      - run: cd react_frontend
+      - run: npm install
+      - run: npm run build
