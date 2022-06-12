@@ -267,7 +267,9 @@ export default function CheckboxForm() {
                         </FormGroup> */}
                     </FormControl>
                 </Item>
-                <div data-testid="test_video" style={{ height: "80%", width: "100%" }}><video ref={videoEl} style={{ autoplay: "False", muted: "False", height: "100%", width: "100%", margin: "auto" }} ><source type="video/mp4" src={myVideo}></source></video></div>
+                <Box textAlign='center'>
+                    <div data-testid="test_video" style={{ height: "80%", width: "100%" }}><video ref={videoEl} style={{ autoplay: "False", muted: "False", height: "100%", width: "90%", margin: "auto" }} ><source type="video/mp4" src={myVideo}></source></video></div>
+                </Box>
                 <Link style={{ textDecoration: 'none' }} to="/ResultPage">
                     <Box textAlign='center'>
                         <Button data-testid="test_button" variant="outlined" onClick={submitResult}>Start</Button>
